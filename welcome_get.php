@@ -10,7 +10,7 @@
     <!-- <h1>Welcome to this site</h1>
     <h3>this is a test page</h3> -->
 
-    Welcome <?php echo $_POST['name'];?><br>
-    Your email address is: <?php echo $_POST['email']?>
+    Welcome <?php echo $_GET['name'];?><br>
+    Your email address is: <?php echo $_GET['email']?>
 </body>
 </html>
