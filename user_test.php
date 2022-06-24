@@ -71,21 +71,21 @@
     <h2>會員註冊資訊</h2>
     <p><span class="error">*請留意紅字為必填欄位</span></p>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
-     中文姓名 Name: <input type="text" name="name">
+     中文姓名 Name: <input type="text" name="name" value="<?php echo $name;?>">
      <span class="error">*<?php echo $nameErr?></span>
      <br><br>
-     電子郵件 Email: <input type="text" name="email">
+     電子郵件 Email: <input type="text" name="email" value="<?php echo $email;?>">
      <span class="error">* <?php echo $emailErr?></span>
      <br><br>
-     聯繫資訊 Phone number: <input type="text" name="number">
+     聯繫資訊 Phone number: <input type="text" name="number" value="<?php echo $number;?>">
      <span class="error">* <?php echo $numberErr?></span>
      <br><br>
-     其他說明事項 Comment: <textarea name="comment" cols="40" rows="5"></textarea>
+     其他說明事項 Comment: <textarea name="comment" cols="40" rows="5"><?php echo $comment;?></textarea>
      <br><br>
      性別 Gender:
-     <input type="radio" name="gender" value="female">女性 Female
-     <input type="radio" name="gender" value="male"> 男性 male
-     <input type="radio" name="gender" value="other"> 其他 other
+     <input type="radio" name="gender" <?php if (isset($gender) && $gender == "female") echo "checked";?>value="female">女性 Female
+     <input type="radio" name="gender" <?php if(isset($gender) && $gender == "male") echo "checked";?> value="male"> 男性 male
+     <input type="radio" name="gender" <?php if(isset($gender) && $gender == "other") echo "checked";?>value="other"> 其他 other
      <span class="error">* <?php echo $genderErr?></span>
      <br><br>
      <input type="submit" name="Submit" value=" 提交 Submit">
