@@ -32,21 +32,35 @@
     $result = mysqli_query($conn, $sql);
 
     // 判斷資料表有沒有內容，如果是空的就不執行查詢
-    if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<br>";
-            echo $row['id'] . "<br>";
-            echo $row['name'] . "<br>";
-            echo $row['註冊時間'] . "<br>";
-            echo $row['email'] . "<br>";
-        }
-    }else{
-        echo "沒有資料內容";
+    // if (mysqli_num_rows($result) > 0) {
+    //     while($row = mysqli_fetch_assoc($result)){
+    //         echo "<br>";
+    //         echo $row['id'] . "<br>";
+    //         echo $row['name'] . "<br>";
+    //         echo $row['註冊時間'] . "<br>";
+    //         echo $row['email'] . "<br>";
+    //     }
+    // }else{
+    //     echo "沒有資料內容";
     
-    }
+    // }
 
     // 每次連線都要關閉，不然伺服器負載會過大
     mysqli_close($conn);
+
+    // 新增加一個PHP陣列，用來轉成Json格式
+    $myarray = array();
+
+    // 判斷資料表有沒有內容，如果是空的就不要查詢
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)){
+            // echo $row[]
+             $myarray[] = $row;
+        }
+        echo json_encode($myarray);
+    }else{
+       echo '沒有資料內容';
+    }
     ?>
 </body>
 </html>
